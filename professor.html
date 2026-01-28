@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professor - AISE Lab">
+    <title>Professor - AISE Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C4E5E;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --bg-gray: #fafafa;
+            --border: #e5e5e5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-gray);
+        }
+
+        /* Header & Nav */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Dropdown Menu CSS */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--bg-gray);
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            background: #fff;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* PI Section Styles */
+        .pi-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .pi-card {
+            background: var(--bg-gray);
+            border-radius: 8px;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+
+        .pi-image {
+            text-align: center;
+        }
+
+        .pi-image img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            background: #ddd;
+            border-radius: 4px;
+        }
+
+        .pi-image h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pi-image p {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .pi-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .pi-info h4:first-child {
+            margin-top: 0;
+        }
+
+        .pi-info ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .pi-info li {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pi-info li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Publication Links Section */
+        .pub-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .link-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .link-card h5 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-card span {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        footer h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        footer p, footer a {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 968px) {
+            .pi-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="AISE Lab Logo">
+            </a>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" style="cursor: default; color: var(--primary);">Members ▾</a>
+                    <div class="dropdown-content">
+                        <a href="professor.html" style="color: var(--primary); font-weight: 600;">Professor</a>
+                        <a href="people.html">Researchers</a>
+                    </div>
+                </li>
+
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Professor</h1>
+        <p>Lab Director</p>
+    </div>
+
+    <section class="pi-section">
+        <div class="pi-card">
+            <div class="pi-image">
+                <img src="images/professor.png" alt="Professor Seunghye Lee">
+                <h3>Seunghye Lee</h3>
+                <p>Associate Professor</p>
+                <p>seunghye@sejong.ac.kr</p>
+            </div>
+            
+            <div class="pi-info">
+                <h4>Education</h4>
+                <ul>
+                    <li>Ph.D. in Architectural Engineering, Sejong University (2015)</li>
+                    <li>M.A. in Architectural Engineering, Sejong University (2003)</li>
+                    <li>B.A. in Architectural Engineering, Sejong University (2001)</li>
+                </ul>
+
+                <h4>Research Interests</h4>
+                <ul>
+                    <li>Computational Mechanics</li>
+                    <li>Structural Optimization</li>
+                    <li>Deep Learning-based Surrogate Models</li>
+                    <li>Metaheuristic Algorithms</li>
+                    <li>Tensegrity Structures</li>
+                </ul>
+
+                <h4>Professional Experience</h4>
+                <ul>
+                    <li>2016-present: Associate Professor, Sejong University</li>
+                    <li>2015-2016: Post-doctoral Researcher, Sejong University</li>
+                    <li>2009-2013: Researcher, RIST (POSCO)</li>
+                    <li>2006-2008: Researcher, Korea Institute of Civil Engineering and Building Technology (KICT)</li>
+                    <li>2003-2005: Engineer, Dongyang Structural Engineers Group</li>
+                </ul>
+
+                <div class="pub-links">
+                    <h4>Research Profiles & Publications</h4>
+                    <div class="links-grid">
+                        <a href="https://scholar.google.com/citations?user=sxuyuRAAAAAJ" target="_blank" class="link-card">
+                            <h5>Google Scholar</h5>
+                            <span>View Publications</span>
+                        </a>
+                        <a href="https://sejong.elsevierpure.com/en/persons/seunghye-lee/" target="_blank" class="link-card">
+                            <h5>Elsevier Pure</h5>
+                            <span>Faculty Profile</span>
+                        </a>
+                        <a href="https://www.scopus.com/authid/detail.uri?authorId=55870237600" target="_blank" class="link-card">
+                            <h5>Scopus</h5>
+                            <span>Author Details</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>AISE Lab</h4>
+                <p>AI & Structural Engineering Laboratory</p>
+                <p>Sejong University</p>
+                <p>Seoul, South Korea</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Room 229, Chungmu Building</p>
+                <p>seunghye@sejong.ac.kr</p>
+                <p>02-6935-2618</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

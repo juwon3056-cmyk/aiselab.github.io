@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AISE Lab - AI & Structural Engineering Laboratory at Sejong University">
+    <title>AISE Lab - AI & Structural Engineering Laboratory</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C4E5E; 
+            --text-dark: #111111;
+            --text-gray: #555555;
+            --bg-gray: #f9f9f9;
+            --border: #eeeeee;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-gray);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 55px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+            z-index: 1000;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--bg-gray);
+            color: var(--primary);
+        }
+
+        /* Hero Section (심플 & 모던) */
+        .hero {
+            background: var(--primary);
+            color: #fff;
+            padding: 9rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800; /* 굵게 처리하여 임팩트 */
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            letter-spacing: -0.03em; /* 자간을 좁혀 단단한 느낌 */
+        }
+
+        h1 .highlight {
+            color: #81D4FA;
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* About Section (2단 레이아웃으로 변경) */
+        .about {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-container {
+            max-width: 1200px; /* 너비 확대 */
+            margin: 0 auto;
+            padding: 8rem 2rem; /* 상하 여백 넉넉하게 */
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* 왼쪽(제목) : 오른쪽(본문) 비율 */
+            gap: 5rem; /* 사이 간격 */
+            align-items: start;
+        }
+
+        .about-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            position: relative;
+        }
+
+        /* 제목 위 포인트 라인 */
+        .about-title h2::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-description p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* 첫 번째 문단 강조 스타일 */
+        .about-description p.lead {
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Research Grid */
+        .research-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            background: var(--bg-gray);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            margin-top: 10px;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .research-image {
+            width: 100%;
+            height: 220px;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .research-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .research-content {
+            padding: 2rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+        }
+
+        .research-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* News Section */
+        .news-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: #ddd;
+        }
+
+        .news-image {
+            width: 180px;
+            flex-shrink: 0;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--border);
+            padding: 1rem;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .news-content {
+            padding: 1.8rem;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .news-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .news-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 5rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        footer h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        footer p, footer a {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            text-decoration: none;
+            line-height: 1.7;
+            display: block;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 5rem 2rem;
+            }
+            .about-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .research-grid, .news-grid, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-card {
+                flex-direction: column;
+            }
+            .news-image {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="AISE Lab Logo">
+            </a>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" style="cursor: default;">Members ▾</a>
+                    <div class="dropdown-content">
+                        <a href="professor.html">Professor</a>
+                        <a href="people.html">Researchers</a>
+                    </div>
+                </li>
+
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span class="highlight">AI & Structural Engineering</span><br>Laboratory</h1>
+            <div class="meta">Department of Architectural Engineering, Sejong University</div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-container">
+            <div class="about-title">
+                <h2>About<br>AISE Lab</h2>
+            </div>
+            
+            <div class="about-description">
+                <p class="lead">
+                    AISE Lab focuses on developing innovative AI-driven solutions for structural engineering challenges.
+                </p>
+                <p>
+                    Our research bridges the gap between artificial intelligence and structural engineering to create more efficient, reliable, and intelligent structural analysis and design methodologies.
+                </p>
+                <p>
+                    Led by Professor Seunghye Lee, our team explores cutting-edge technologies including deep learning-based surrogate models, structural optimization, and computational mechanics to address real-world challenges in structural engineering and construction.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="research-section">
+        <h2 class="section-title">Research Areas</h2>
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="images/research-1.png" alt="AI-based Surrogate Analysis">
+                </div>
+                <div class="research-content">
+                    <h3>AI-based Surrogate Structural Analysis</h3>
+                    <p>Developing deep learning-based surrogate models for efficient and accurate structural analysis and prediction.</p>
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="images/research-2.png" alt="AI-based Automated Design">
+                </div>
+                <div class="research-content">
+                    <h3>AI-based Automated Structural Design</h3>
+                    <p>Leveraging artificial intelligence for intelligent automation in structural design and optimization processes.</p>
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="images/research-3.png" alt="AI-based Robot Operations">
+                </div>
+                <div class="research-content">
+                    <h3>AI-based Construction Robot Operations</h3>
+                    <p>Advancing construction automation through AI-driven robotics and intelligent operation systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2 class="section-title">Latest Updates</h2>
+        <div class="news-grid">
+            
+            <div class="news-card">
+                <div class="news-image">
+                    <img src="images/logo.png" alt="Website Renewal">
+                </div>
+                <div class="news-content">
+                    <p class="news-date">28 Jan 2026</p>
+                    <h3>Website Renewal Open</h3>
+                    <p>The official website of AISE Lab has been renewed. Check out our research and activities.</p>
+                </div>
+            </div>
+            
+            <div class="news-card">
+                <div class="news-image">
+                    <img src="images/news-1.jpg" alt="Lab Establishment">
+                </div>
+                <div class="news-content">
+                    <p class="news-date">01 Dec 2025</p>
+                    <h3>AISE Lab Established</h3>
+                    <p>AI Structural Engineering Laboratory (AISE Lab) was officially established at Sejong University.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>AISE Lab</h4>
+                <p>AI & Structural Engineering Laboratory</p>
+                <p>Sejong University</p>
+                <p>Seoul, South Korea</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Room 229, Chungmu Building</p>
+                <p>seunghye@sejong.ac.kr</p>
+                <p>02-6935-2618</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
