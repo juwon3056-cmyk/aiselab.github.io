@@ -20,25 +20,7 @@ aise-lab-website/
 ├── projects.html       # Research projects
 ├── contact.html        # Contact information
 ├── images/
-│   ├── logo.svg       ✅ Lab logo (provided)
-│   ├── professor.png  📷 Need to add
-│   ├── juwon-choi.png 📷 Need to add
-│   ├── research-1.png 📷 Need to add (AI Surrogate Analysis)
-│   ├── research-2.png 📷 Need to add (AI Automated Design)
-│   └── research-3.png 📷 Need to add (AI Robot Operations)
-└── README.md
-```
-
-## Required Images
-
-### Essential
-1. **professor.png** - Professor Seunghye Lee profile photo (square/circle recommended)
-2. **juwon-choi.png** - Undergraduate researcher photo (square/circle recommended)
-
-### Research Images
-3. **research-1.png** - AI-based Surrogate Structural Analysis visualization
-4. **research-2.png** - AI-based Automated Structural Design visualization
-5. **research-3.png** - AI-based Construction Robot Operations visualization
+│   ├── logo.svg       ✅ Lab logo
 
 ### Optional
 - News/update images (can be added later)
@@ -100,31 +82,6 @@ Copy the project card template:
     </div>
 </div>
 ```
-
-## Deployment
-
-### Local Testing
-
-Option 1: Double-click `index.html`
-
-Option 2: Python server
-```bash
-python -m http.server 8000
-# Visit http://localhost:8000
-```
-
-Option 3: Node.js
-```bash
-npx http-server
-```
-
-### School Server Deployment
-
-1. Connect via FTP/SFTP
-2. Upload all files to web directory
-3. Set permissions:
-   - Directories: 755
-   - Files: 644
 
 ## Browser Support
 
