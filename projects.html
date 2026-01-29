@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AISE Lab Projects">
+    <title>Projects - AISE Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C4E5E;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --bg-gray: #fafafa;
+            --border: #e5e5e5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-gray);
+        }
+
+        /* Header & Nav */
+        header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Dropdown Menu CSS */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--bg-gray);
+            color: var(--primary);
+        }
+
+        /* Page Header */
+        .page-header {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            background: #fff;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: #fff;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-gray);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-completed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-size: 0.9rem;
+        }
+
+        .meta-label {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Placeholder */
+        .placeholder {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        footer h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        footer p, footer a {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 968px) {
+            .project-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    
+/* ========== 모바일 메뉴 ========== */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    width: 30px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 80px 2rem 2rem;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.hidden {
+    transform: translateX(100%);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mobile-menu li {
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 1rem 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.mobile-menu .dropdown {
+    display: block;
+}
+
+.mobile-menu .dropdown-content {
+    position: static;
+    display: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: #f9f9f9;
+    transform: none;
+}
+
+.mobile-menu .dropdown.active .dropdown-content {
+    display: block;
+}
+
+.mobile-menu .dropdown-content a {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    nav > ul {
+        display: none !important;
+    }
+}
+    
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="AISE Lab Logo">
+            </a>
+            <ul>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" style="cursor: default;">Members ▾</a>
+                    <div class="dropdown-content">
+                        <a href="professor.html">Professor</a>
+                        <a href="people.html">Researchers</a>
+                    </div>
+                </li>
+
+                <li><a href="projects.html" style="color: var(--primary); font-weight: 600;">Projects</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Research Projects</h1>
+        <p>Selected research projects</p>
+    </div>
+
+    <section class="projects-section">
+        <h2 class="section-title">Completed Projects</h2>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-status status-completed">Completed</span>
+                <h3>Long-Span Structural Defect Detection via Computer Vision</h3>
+            </div>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Focus Area</div>
+                    <div class="meta-value">Computer Vision & Deep Learning / Structural Health Monitoring</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Role</div>
+                    <div class="meta-value">Researcher</div>
+                </div>
+                <div class="meta-item"></div>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <img src="images/project-1.png" alt="Project Image" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #eee;">
+            </div>
+
+            <div class="project-description">
+                <p>
+                   Designed computer vision pipelines for multi-class defect detection on long-span structures using deep learning.
+                   Optimized models through curriculum learning to overcome limited training data constraints.
+                </p>
+            </div>
+        </div>
+
+        <div class="placeholder">
+            <p>Additional project information will be added.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4>AISE Lab</h4>
+                <p>AI & Structural Engineering Laboratory</p>
+                <p>Sejong University</p>
+                <p>Seoul, South Korea</p>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Room 229, Chungmu Building</p>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2754425249404f5e426754424d484940094644094c55">[email
