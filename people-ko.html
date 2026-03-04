@@ -400,18 +400,27 @@ footer .box{
   </div>
   <button class="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></header>
-<div class="drawer shut"><ul><li><a href="research-ko.html">연구 분야</a></li><li><a href="publications-ko.html">논문</a></li><li class="dd"><a href="#" style="cursor:default" class="on">구성원</a><div class="dd-m"><a href="professor-ko.html">교수</a><a href="people-ko.html" class="on">연구원</a></div></li><li><a href="projects-ko.html">프로젝트</a></li><li><a href="news-ko.html">소식</a></li><li><a href="contact-ko.html">오시는 길</a></li><li style="border-top:1px solid var(--border);margin-top:.5rem"><a href="people.html" style="color:var(--red);font-size:.9rem">→ English</a></li></ul></div><div class="ph"><div class="box"><h1>구성원</h1><div class="ph-bar"><div class="ph-rule"></div><p>연구팀을 소개합니다</p></div></div></div><section class="ss"><div class="box"><div class="ppl-lbl">학부 연구원</div><div class="mc"><img src="images/juwon-choi.png" alt="최주원"><div class="mi"><h3>최주원</h3><p class="rnk">학부 연구원</p><p class="dept">세종대학교 건축공학과</p><p class="ints"><strong>관심 분야: </strong>컴퓨터 비전, 건설 로봇, 딥러닝</p><a href="mailto:22011038@sejong.ac.kr" class="em">22011038@sejong.ac.kr</a></div></div></div></section><footer><div class="box">
+<div class="drawer shut"><ul><li><a href="research-ko.html">연구 분야</a></li><li><a href="publications-ko.html">논문</a></li><li class="dd"><a href="#" style="cursor:default" class="on">구성원</a><div class="dd-m"><a href="professor-ko.html">교수</a><a href="people-ko.html" class="on">연구원</a></div></li><li><a href="projects-ko.html">프로젝트</a></li><li><a href="news-ko.html">소식</a></li><li><a href="contact-ko.html">오시는 길</a></li><li style="border-top:1px solid var(--border);margin-top:.5rem"><a href="people.html" style="color:var(--red);font-size:.9rem">→ English</a></li></ul></div><div class="ph"><div class="box"><h1>구성원</h1><div class="ph-bar"><div class="ph-rule"></div><p>연구팀을 소개합니다</p></div></div></div><section class="ss"><div class="box"><div class="ppl-lbl">학부 연구원</div><div class="mc"><img src="images/juwon-choi.png" alt="최주원"><div class="mi"><h3>최주원</h3><p class="rnk">학부 연구원</p><p class="dept">세종대학교 건축공학과</p><p class="ints"><strong>관심 분야: </strong>컴퓨터 비전, 건설 로봇, 딥러닝</p><a href="mailto:22011038@sju.ac.kr" class="em">22011038@sju.ac.kr</a></div></div>
+
+<div class="mc" style="margin-top:var(--s3)">
+  <img src="images/jiwon-park.jpg" alt="박지원" style="background:var(--surf)">
+  <div class="mi">
+    <h3>박지원</h3>
+    <p class="rnk">학부 연구원</p>
+    <p class="dept">세종대학교 건축공학과</p>
+    <p class="ints"><strong>관심 분야: </strong>AI 기반 건설로봇 운용</p>
+    <a href="mailto:24011578@sju.ac.kr" class="em">24011578@sju.ac.kr</a>
+  </div>
+</div>
+
+</div></section><footer><div class="box">
   <div class="fl"><h4>AISE 연구실</h4><p>AI구조공학 연구실</p><p>세종대학교</p><p>대한민국 서울</p></div>
   <div class="fr"><img src="images/sejong-logo.png" alt="세종대학교"><span>© 2026 AISE Lab, 세종대학교. All Rights Reserved.</span></div>
 </div></footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var btn=document.querySelector('.hbg'),dr=document.querySelector('.drawer');
   if(!btn||!dr)return;
   btn.addEventListener('click',function(e){e.stopPropagation();btn.classList.toggle('open');dr.classList.toggle('shut');document.body.style.overflow=dr.classList.contains('shut')?'':'hidden'});
   dr.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){btn.classList.remove('open');dr.classList.add('shut');document.body.style.overflow=''})});
-  dr.querySelectorAll('.dd>a').forEach(function(a){a.addEventListener('click',function(e){if(window.innerWidth<=820){e.preventDefault();this.parentElement.classList.toggle('open')}})});
-  document.addEventListener('click',function(e){if(!btn.contains(e.target)&&!dr.contains(e.target)){btn.classList.remove('open');dr.classList.add('shut');document.body.style.overflow=''}});
-  window.addEventListener('resize',function(){if(window.innerWidth>820){btn.classList.remove('open');dr.classList.add('shut');document.body.style.overflow=''}});
-})();
-</script></body></html>
+  dr.querySelectorAll('.dd>a').forEach(function(a){a.addEventListener('click',f
