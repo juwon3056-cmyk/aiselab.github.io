@@ -21,10 +21,8 @@
   --dark:#0f1c25; --mid:#3a5260; --gray:#5c7585;
   --light:#8da4b0; --border:#d2dfe8;
   --surf:#edf2f6; --white:#fff;
-  /* 8-pt grid */
   --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem;
   --s5:2.5rem; --s6:3rem; --s8:4rem; --s10:5rem; --s12:6rem;
-  /* The ONE horizontal padding — used everywhere */
   --gutter:clamp(1.25rem,4.5vw,5.5rem);
   --max:1520px;
 }
@@ -37,14 +35,12 @@ body{
   overflow-x:hidden;
 }
 
-/* ── UNIVERSAL BOX ── */
 .box{
   max-width:var(--max);
   margin-inline:auto;
   padding-inline:var(--gutter);
 }
 
-/* ── HEADER / NAV ── */
 header{
   background:var(--white);
   border-bottom:1px solid var(--border);
@@ -256,7 +252,7 @@ header{
 .ko-ab-body p{font-size:1.02rem;color:var(--gray);line-height:1.88;margin-bottom:var(--s2)}
 @media(max-width:820px){.ko-ab-top{grid-template-columns:1fr}}
 
-/* ── RESEARCH GRID (FIXED FOR ONE LINE) ── */
+/* ── RESEARCH GRID ── */
 .rg{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
 .rc{
   background:var(--white);border:1px solid var(--border);
@@ -267,23 +263,17 @@ header{
 .rc:hover{box-shadow:0 8px 28px rgba(29,60,79,.1);transform:translateY(-3px);border-color:rgba(29,60,79,.25)}
 .rnum{font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--red);margin-bottom:var(--s3);display:flex;align-items:center;gap:.55rem}
 .rnum::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* 제목 한 줄 유지 설정 */
 .rc h3{
   font-size:1.05rem;font-weight:700;color:var(--navy);
   line-height:1.42;margin-bottom:var(--s2);letter-spacing:-.01em;
-  white-space: nowrap;  /* 줄 바꿈 금지 */
-  overflow: hidden;
-  text-overflow: ellipsis; /* 혹시 넘치면 말줄임표 (안전장치) */
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-
 .rc p{font-size:1rem;color:var(--gray);line-height:1.78;flex:1}
 .rarr{display:inline-flex;align-items:center;gap:.35rem;font-size:.85rem;font-weight:600;color:var(--navy-l);text-decoration:none;margin-top:var(--s3);transition:gap .2s,color .2s}
 .rarr:hover{gap:.55rem;color:var(--red)}
-
 @media(max-width:820px){
-    .rg{grid-template-columns:1fr 1fr}
-    .rc h3{white-space: normal;} /* 모바일에서는 다시 자동 줄바꿈 허용 */
+  .rg{grid-template-columns:1fr 1fr}
+  .rc h3{white-space:normal}
 }
 @media(max-width:520px){.rg{grid-template-columns:1fr}}
 
@@ -323,7 +313,7 @@ footer .box{padding-top:var(--s6);padding-bottom:var(--s6);display:flex;justify-
   <div class="nav-r">
     <ul class="nav-list"><li><a href="research-ko.html">연구 분야</a></li><li><a href="publications-ko.html">논문</a></li><li class="dd"><a href="#" style="cursor:default">구성원</a><div class="dd-m"><a href="professor-ko.html">교수</a><a href="people-ko.html">연구원</a></div></li><li><a href="projects-ko.html">프로젝트</a></li><li><a href="news-ko.html">소식</a></li><li><a href="contact-ko.html">오시는 길</a></li></ul>
     <div class="lsw">
-      <button class="lbtn " onclick="location.href='index.html'" >EN</button>
+      <button class="lbtn " onclick="location.href='index.html'">EN</button>
       <button class="lbtn on" onclick="location.href='#'" disabled>KO</button>
     </div>
   </div>
@@ -395,13 +385,34 @@ footer .box{padding-top:var(--s6);padding-bottom:var(--s6);display:flex;justify-
     <a href="news-ko.html" class="va">전체 보기 →</a>
   </div>
   <div class="ng">
-    <div class="nf"><div class="nfi"><img src="images/news-1.jpg" alt="AISE 연구실 창설"></div>
-      <div class="nfb"><span class="ntag">이정표</span><p class="ndt">2025년 12월 19일</p><h3>AISE 연구실 창설</h3><p>이승혜 교수님의 지도 아래 AI 구조공학 연구실(AISE Lab)이 세종대학교에 공식 출범하였습니다.</p></div></div>
+    <!-- Featured: 가장 최신 소식 -->
+    <div class="nf">
+      <div class="nfi"><img src="images/news-2.jpg" alt="Unitree G1 Edu Plus 세미나 성료"></div>
+      <div class="nfb">
+        <span class="ntag">세미나</span>
+        <p class="ndt">2026년 2월 25일</p>
+        <h3>Unitree G1 Edu Plus 세미나 성공적으로 완료</h3>
+        <p>Unitree G1 Edu Plus 휴머노이드 로봇을 주제로 한 기술 세미나를 성공적으로 마쳤습니다. 하드웨어 구성, 기본 동작 제어, SDK 운용 방법을 다루었으며 실습도 진행하였습니다.</p>
+      </div>
+    </div>
+    <!-- Side: 이전 소식 2건 -->
     <div class="nside">
-      <div class="nc"><span class="ntag">공지</span><p class="ndt">2026년 1월 28일</p><h3>홈페이지 리뉴얼 오픈</h3><p>AISE 연구실 공식 홈페이지가 새롭게 오픈되었습니다.</p></div>
+      <div class="nc">
+        <span class="ntag">공지</span>
+        <p class="ndt">2026년 1월 28일</p>
+        <h3>홈페이지 리뉴얼 오픈</h3>
+        <p>AISE 연구실 공식 홈페이지가 새롭게 오픈되었습니다.</p>
+      </div>
+      <div class="nc">
+        <span class="ntag">이정표</span>
+        <p class="ndt">2025년 12월 19일</p>
+        <h3>AISE 연구실 창설</h3>
+        <p>이승혜 교수님의 지도 아래 AISE Lab이 세종대학교에 공식 출범하였습니다.</p>
+      </div>
     </div>
   </div>
 </div></section>
+
 <footer><div class="box">
   <div class="fl"><h4>AISE 연구실</h4><p>AI구조공학 연구실</p><p>세종대학교</p><p>대한민국 서울</p></div>
   <div class="fr"><img src="images/sejong-logo.png" alt="세종대학교"><span>© 2026 AISE Lab, 세종대학교. All Rights Reserved.</span></div>
