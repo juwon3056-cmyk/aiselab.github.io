@@ -21,10 +21,8 @@
   --dark:#0f1c25; --mid:#3a5260; --gray:#5c7585;
   --light:#8da4b0; --border:#d2dfe8;
   --surf:#edf2f6; --white:#fff;
-  /* 8-pt grid */
   --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem;
   --s5:2.5rem; --s6:3rem; --s8:4rem; --s10:5rem; --s12:6rem;
-  /* The ONE horizontal padding — used everywhere */
   --gutter:clamp(1.25rem,4.5vw,5.5rem);
   --max:1520px;
 }
@@ -36,17 +34,11 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-
-/* ── UNIVERSAL BOX ──
-   Every content region — page header AND section inner — is wrapped in .box.
-   Identical structure guarantees pixel-perfect horizontal alignment.        */
 .box{
   max-width:var(--max);
   margin-inline:auto;
   padding-inline:var(--gutter);
 }
-
-/* ── HEADER / NAV ── */
 header{
   background:var(--white);
   border-bottom:1px solid var(--border);
@@ -74,8 +66,6 @@ header{
 }
 .nav-list li>a:hover{color:var(--navy);background:var(--surf)}
 .nav-list li>a.on{color:var(--red);font-weight:600}
-
-/* Dropdown — invisible bridge prevents hover gap */
 .dd{position:relative}
 .dd>a::after{content:' ▾';font-size:.67em;opacity:.5;margin-left:.15rem}
 .dd::after{
@@ -99,8 +89,6 @@ header{
 }
 .dd-m a:hover{background:var(--surf);color:var(--red)}
 .dd-m a.on{color:var(--red);font-weight:600}
-
-/* Lang toggle */
 .lsw{
   display:flex;border:1.5px solid var(--border);
   border-radius:20px;overflow:hidden;flex-shrink:0;
@@ -113,8 +101,6 @@ header{
 }
 .lbtn.on{background:var(--navy);color:#fff}
 .lbtn:hover:not(.on){color:var(--navy)}
-
-/* Mobile hamburger */
 .hbg{
   display:none;flex-direction:column;
   justify-content:space-around;
@@ -125,8 +111,6 @@ header{
 .hbg.open span:nth-child(1){transform:translateY(7.75px) rotate(45deg)}
 .hbg.open span:nth-child(2){opacity:0}
 .hbg.open span:nth-child(3){transform:translateY(-7.75px) rotate(-45deg)}
-
-/* Mobile drawer */
 .drawer{
   position:fixed;top:0;right:0;
   width:78%;max-width:290px;height:100vh;
@@ -163,10 +147,6 @@ header{
   .nav-r>.nav-list{display:none!important}
   .nav-r{gap:.75rem}
 }
-
-/* ── PAGE HEADER BAND ──
-   .ph is full-width navy. .box inside handles all spacing.
-   Identical to section .box — pixel-perfect alignment.     */
 .ph{background:var(--navy)}
 .ph .box{padding-top:var(--s8);padding-bottom:var(--s6)}
 .ph h1{
@@ -177,11 +157,8 @@ header{
 .ph-bar{display:flex;align-items:center;gap:.75rem;margin-top:.75rem}
 .ph-rule{width:2.25rem;height:3px;background:var(--red);border-radius:2px;flex-shrink:0}
 .ph p{font-size:.9rem;color:rgba(255,255,255,.46)}
-
-/* ── SECTION CONTAINERS ── */
-.sw{background:var(--white)}  /* white section */
-.ss{background:var(--surf)}   /* surface section */
-/* All sections: .box handles vertical padding too */
+.sw{background:var(--white)}
+.ss{background:var(--surf)}
 .sw .box,.ss .box{padding-top:var(--s10);padding-bottom:var(--s10)}
 @media(max-width:900px){.sw .box,.ss .box{padding-top:var(--s8);padding-bottom:var(--s8)}}
 @media(max-width:600px){.sw .box,.ss .box{padding-top:var(--s6);padding-bottom:var(--s6)}}
@@ -189,8 +166,6 @@ header{
   .ph .box{padding-top:var(--s6);padding-bottom:var(--s5)}
   .sw .box,.ss .box{padding-top:var(--s5);padding-bottom:var(--s5)}
 }
-
-/* Section heading row */
 .sh{
   display:flex;justify-content:space-between;
   align-items:flex-end;margin-bottom:var(--s6);
@@ -214,8 +189,6 @@ header{
 }
 .va:hover{color:var(--red)}
 @media(max-width:480px){.sh{margin-bottom:var(--s4)}}
-
-/* ── FOOTER ── */
 footer{background:var(--navy-d)}
 footer .box{
   padding-top:var(--s6);padding-bottom:var(--s6);
@@ -235,9 +208,6 @@ footer .box{
   .fr{align-items:flex-start}
   .fr span{text-align:left}
 }
-
-
-/* ── RESEARCH ── */
 .rb-list{display:flex;flex-direction:column}
 .rb{
   display:grid;grid-template-columns:1fr 1fr;
@@ -261,15 +231,11 @@ footer .box{
   .rb.rev>.rb-img{order:0}
   .rb-img{aspect-ratio:16/9}
 }
-
-/* ── PUBLICATIONS ── */
 .pub-box{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .pub-badge{display:inline-block;padding:.3rem 1.1rem;background:var(--red-bg);color:var(--red);border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:var(--s4)}
 .pub-box h1{font-size:clamp(1.85rem,3.8vw,2.8rem);font-weight:700;color:var(--navy);letter-spacing:-.03em;margin-bottom:var(--s2)}
 .pub-box p{color:var(--gray);max-width:500px;line-height:1.82;font-size:1rem}
 .pub-wip{color:var(--light)!important;font-size:.9rem!important;margin-top:var(--s2)}
-
-/* ── PROFESSOR ── */
 .pi{
   display:grid;grid-template-columns:200px 1fr;
   gap:var(--s8);align-items:start;
@@ -303,8 +269,6 @@ footer .box{
   .pp img{margin:0 auto}
 }
 @media(max-width:380px){.lkg{grid-template-columns:1fr}}
-
-/* ── PEOPLE ── */
 .ppl-lbl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:var(--s4)}
 .mc{
   background:var(--white);border:1px solid var(--border);
@@ -320,8 +284,6 @@ footer .box{
 .mi .ints strong{color:var(--mid);font-weight:600}
 .mi .em{color:var(--red);text-decoration:none;font-size:.88rem;display:inline-block;margin-top:.65rem}
 @media(max-width:520px){.mc{grid-template-columns:1fr;text-align:center;gap:var(--s3)}.mc img{margin:0 auto}}
-
-/* ── PROJECTS ── */
 .pj-lbl{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:var(--s4)}
 .pjc{
   background:var(--white);border:1px solid var(--border);
@@ -342,8 +304,6 @@ footer .box{
 .pjd{font-size:.97rem;color:var(--gray);line-height:1.8}
 .pj-ph{text-align:center;padding:var(--s5);color:var(--light);font-size:.95rem;border:1px dashed var(--border);border-radius:12px;margin-top:var(--s2)}
 @media(max-width:600px){.pjm{grid-template-columns:1fr}.pjc{padding:var(--s4)}}
-
-/* ── NEWS ── */
 .nl{display:flex;flex-direction:column;gap:var(--s2)}
 .ni{
   background:var(--white);border:1px solid var(--border);
@@ -367,8 +327,6 @@ footer .box{
   .ni-d{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .8rem;border-radius:6px;width:auto}
   .ni-d .dy{font-size:1.2rem}
 }
-
-/* ── CONTACT ── */
 .ctg{display:grid;grid-template-columns:1fr 1.25fr;gap:var(--s8);align-items:start}
 .cti{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .ctr{padding:var(--s3) var(--s4);border-bottom:1px solid var(--border)}
@@ -386,7 +344,6 @@ footer .box{
 .dirl li::before{content:'→';position:absolute;left:0;color:var(--light)}
 @media(max-width:900px){.ctg{grid-template-columns:1fr;gap:var(--s4)}}
 @media(max-width:480px){.mapw iframe{height:256px}}
-
 </style>
 </head>
 <body><header><div class="nav-box">
@@ -394,13 +351,54 @@ footer .box{
   <div class="nav-r">
     <ul class="nav-list"><li><a href="research-ko.html">연구 분야</a></li><li><a href="publications-ko.html">논문</a></li><li class="dd"><a href="#" style="cursor:default">구성원</a><div class="dd-m"><a href="professor-ko.html">교수</a><a href="people-ko.html">연구원</a></div></li><li><a href="projects-ko.html">프로젝트</a></li><li><a href="news-ko.html" class="on">소식</a></li><li><a href="contact-ko.html">오시는 길</a></li></ul>
     <div class="lsw">
-      <button class="lbtn " onclick="location.href='news.html'" >EN</button>
+      <button class="lbtn " onclick="location.href='news.html'">EN</button>
       <button class="lbtn on" onclick="location.href='#'" disabled>KO</button>
     </div>
   </div>
   <button class="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></header>
-<div class="drawer shut"><ul><li><a href="research-ko.html">연구 분야</a></li><li><a href="publications-ko.html">논문</a></li><li class="dd"><a href="#" style="cursor:default">구성원</a><div class="dd-m"><a href="professor-ko.html">교수</a><a href="people-ko.html">연구원</a></div></li><li><a href="projects-ko.html">프로젝트</a></li><li><a href="news-ko.html" class="on">소식</a></li><li><a href="contact-ko.html">오시는 길</a></li><li style="border-top:1px solid var(--border);margin-top:.5rem"><a href="news.html" style="color:var(--red);font-size:.9rem">→ English</a></li></ul></div><div class="ph"><div class="box"><h1>연구실 소식</h1><div class="ph-bar"><div class="ph-rule"></div><p>최신 공지, 연구 성과 및 활동</p></div></div></div><section class="ss"><div class="box"><div class="nl"><div class="ni"><div class="ni-d"><span class="dy">28</span><span class="mn">2026년 1월</span></div><div class="ni-th"><img src="images/logo.png" alt="홈페이지 리뉴얼 오픈" style="object-fit:contain;padding:1.25rem;background:#fff"></div><div class="ni-bd"><h3>홈페이지 리뉴얼 오픈</h3><p>AISE 연구실 공식 홈페이지가 새롭게 오픈되었습니다. 연구 성과와 활동을 지속적으로 공유할 예정입니다.</p><span class="ntag">공지</span></div></div><div class="ni"><div class="ni-d"><span class="dy">19</span><span class="mn">2025년 12월</span></div><div class="ni-th"><img src="images/news-1.jpg" alt="AISE 연구실 창설" style=""></div><div class="ni-bd"><h3>AISE 연구실 창설</h3><p>이승혜 교수님의 지도 아래 AISE Lab이 세종대학교에 공식 출범하였습니다.</p><span class="ntag">이정표</span></div></div></div></div></section><footer><div class="box">
+<div class="drawer shut"><ul><li><a href="research-ko.html">연구 분야</a></li><li><a href="publications-ko.html">논문</a></li><li class="dd"><a href="#" style="cursor:default">구성원</a><div class="dd-m"><a href="professor-ko.html">교수</a><a href="people-ko.html">연구원</a></div></li><li><a href="projects-ko.html">프로젝트</a></li><li><a href="news-ko.html" class="on">소식</a></li><li><a href="contact-ko.html">오시는 길</a></li><li style="border-top:1px solid var(--border);margin-top:.5rem"><a href="news.html" style="color:var(--red);font-size:.9rem">→ English</a></li></ul></div>
+
+<div class="ph"><div class="box"><h1>연구실 소식</h1><div class="ph-bar"><div class="ph-rule"></div><p>최신 공지, 연구 성과 및 활동</p></div></div></div>
+
+<section class="ss"><div class="box"><div class="nl">
+
+  <!-- 소식 1: 세미나 (최신순) -->
+  <div class="ni">
+    <div class="ni-d"><span class="dy">25</span><span class="mn">2026년 2월</span></div>
+    <div class="ni-th"><img src="images/news-2.jpg" alt="Unitree G1 Edu Plus 세미나 성료"></div>
+    <div class="ni-bd">
+      <h3>Unitree G1 Edu Plus 세미나 성공적으로 완료</h3>
+      <p>AISE 연구실이 Unitree G1 Edu Plus 휴머노이드 로봇을 주제로 한 기술 세미나를 성공적으로 마쳤습니다. 하드웨어 구성, 기본 동작 제어, SDK 운용 방법을 다루었으며, 연구실 구성원들이 로봇 시스템을 직접 실습하는 시간을 가졌습니다.</p>
+      <span class="ntag">세미나</span>
+    </div>
+  </div>
+
+  <!-- 소식 2: 홈페이지 -->
+  <div class="ni">
+    <div class="ni-d"><span class="dy">28</span><span class="mn">2026년 1월</span></div>
+    <div class="ni-th"><img src="images/logo.png" alt="홈페이지 리뉴얼 오픈" style="object-fit:contain;padding:1.25rem;background:#fff"></div>
+    <div class="ni-bd">
+      <h3>홈페이지 리뉴얼 오픈</h3>
+      <p>AISE 연구실 공식 홈페이지가 새롭게 오픈되었습니다. 연구 성과와 활동을 지속적으로 공유할 예정입니다.</p>
+      <span class="ntag">공지</span>
+    </div>
+  </div>
+
+  <!-- 소식 3: 연구실 창설 -->
+  <div class="ni">
+    <div class="ni-d"><span class="dy">19</span><span class="mn">2025년 12월</span></div>
+    <div class="ni-th"><img src="images/news-1.jpg" alt="AISE 연구실 창설"></div>
+    <div class="ni-bd">
+      <h3>AISE 연구실 창설</h3>
+      <p>이승혜 교수님의 지도 아래 AISE Lab이 세종대학교에 공식 출범하였습니다.</p>
+      <span class="ntag">이정표</span>
+    </div>
+  </div>
+
+</div></div></section>
+
+<footer><div class="box">
   <div class="fl"><h4>AISE 연구실</h4><p>AI구조공학 연구실</p><p>세종대학교</p><p>대한민국 서울</p></div>
   <div class="fr"><img src="images/sejong-logo.png" alt="세종대학교"><span>© 2026 AISE Lab, 세종대학교. All Rights Reserved.</span></div>
 </div></footer>
