@@ -288,6 +288,17 @@ br.s-break{display:none}
   padding:.15rem .6rem;border-radius:20px;background:var(--surf);
   border:1px solid var(--line);color:var(--ink-soft);margin-top:.6rem}
 
+/* ── 미디어(영상) ── */
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.video{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  background:var(--white);transition:.2s}
+.video:hover{border-color:#c3d4f2;box-shadow:0 6px 20px rgba(15,94,224,.08)}
+.video .frame{position:relative;aspect-ratio:16/9;background:#000}
+.video .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.video .cap{padding:1rem 1.2rem}
+.video .cap h3{font-size:1.05rem;font-weight:700;margin-bottom:.25rem;letter-spacing:-.01em}
+.video .cap p{color:var(--ink-soft);font-size:.9rem}
+
 /* ── 오시는 길 ── */
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
 @media(max-width:720px){.contact{grid-template-columns:1fr}}
