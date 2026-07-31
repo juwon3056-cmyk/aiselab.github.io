@@ -16,3 +16,19 @@
   });
   window.addEventListener('resize', function(){ if(window.innerWidth>860) close(); });
 })();
+
+// 소식 이미지 라이트박스 (클릭 시 원본 전체 보기)
+(function(){
+  var imgs = document.querySelectorAll('.news-media img');
+  if(!imgs.length) return;
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  var big = document.createElement('img');
+  box.appendChild(big);
+  document.body.appendChild(box);
+  function open(src, alt){ big.src = src; big.alt = alt || ''; box.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ box.classList.remove('open'); document.body.style.overflow = ''; big.src = ''; }
+  imgs.forEach(function(im){ im.addEventListener('click', function(){ open(im.src, im.alt); }); });
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();

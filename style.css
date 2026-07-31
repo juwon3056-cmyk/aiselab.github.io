@@ -284,6 +284,22 @@ br.s-break{display:none}
 .news-date{flex-shrink:0;width:100px;color:var(--ink-mute);font-size:.9rem}
 .news-body h3{font-size:1.15rem;font-weight:700;margin-bottom:.4rem}
 .news-body p{color:var(--ink-soft);font-size:.97rem}
+/* 소식 이미지 — 균일 높이 저스티파이드 갤러리(비율 유지·크롭 없음), 클릭 시 원본 확대 */
+.news-media{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.1rem}
+.news-media img{height:300px;width:auto;max-width:100%;border-radius:8px;
+  border:1px solid var(--line);background:var(--surf);cursor:zoom-in;transition:filter .15s}
+.news-media img:hover{filter:brightness(.95)}
+@media(max-width:640px){
+  .news-media{display:block}
+  .news-media img{height:auto;width:100%;margin-bottom:.8rem}
+}
+/* 라이트박스 (클릭 시 원본 전체 보기) */
+.lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;
+  background:rgba(15,23,32,.88);padding:clamp(1rem,4vw,3rem);cursor:zoom-out;
+  opacity:0;visibility:hidden;transition:opacity .2s}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(1100px,94vw);max-height:92vh;width:auto;height:auto;
+  border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.45)}
 .badge{display:inline-block;font-size:.75rem;font-weight:600;
   padding:.15rem .6rem;border-radius:20px;background:var(--surf);
   border:1px solid var(--line);color:var(--ink-soft);margin-top:.6rem}
